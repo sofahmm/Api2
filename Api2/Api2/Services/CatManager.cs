@@ -9,10 +9,18 @@ namespace Api2.Services
     public class CatManager
     {
         IrestService service;
+        private RestService restService;
+
         public CatManager(IrestService restService)
         {
             service = restService;
         }
+
+        public CatManager(RestService restService)
+        {
+            this.restService = restService;
+        }
+
         public Task<List<CatItemModel>> GetCatItemModels()
         {
             return service.GetCatitemAsync();

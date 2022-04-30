@@ -1,4 +1,5 @@
 ﻿using Api2.Services;
+using Api2.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,7 +13,7 @@ namespace Api2
         {
             InitializeComponent();
             CatManager = new CatManager(new RestService());
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new CatListPage());
         }
 
         protected override void OnStart()
