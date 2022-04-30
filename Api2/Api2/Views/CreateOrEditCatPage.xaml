@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Api2.Views.CreateOrEditCatPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Имя котика:" />
+            <Entry Placeholder="введите текст" Text="{Binding Name}"/>
+            <Button x:Name="SaveBtn"
+                    Text="Save"
+                    Clicked="SaveBtn_Clicked"/>
+            <Button x:Name="DeleteBtn"
+                    Text="Delete"
+                    Clicked="DeleteBtn_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
