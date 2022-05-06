@@ -6,6 +6,7 @@
         <StackLayout>
             <Label Text="Имя котика:" />
             <Entry Placeholder="введите текст" Text="{Binding Name}"/>
+            <Entry Placeholder="введите текст" Text="{Binding Color}"/>
             <Button x:Name="SaveBtn"
                     Text="Save"
                     Clicked="SaveBtn_Clicked"/>

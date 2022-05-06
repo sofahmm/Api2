@@ -9,17 +9,12 @@ namespace Api2.Services
     public class CatManager
     {
         IrestService service;
-        private RestService restService;
 
         public CatManager(IrestService restService)
         {
             service = restService;
         }
-
-        public CatManager(RestService restService)
-        {
-            this.restService = restService;
-        }
+       
 
         public Task<List<CatItemModel>> GetCatItemModels()
         {
@@ -33,5 +28,24 @@ namespace Api2.Services
         {
             return service.SaveCatItemAsync(catItem, isNewitem);
         }
+        /*IRestService service;
+
+        public TodoManager(IRestService restService)
+        {
+            service = restService;
+        }
+        public Task<List<TodoItemModel>> GetTodoItemModels()
+        {
+            return service.GetTodoItemAsync();
+        }
+
+        public Task DeleteTodoAsync(TodoItemModel item) 
+        {
+            return service.DeleteTodoItemAsync(item);
+        }
+        public Task SaveItemAsync(TodoItemModel todoItem, bool isNewItem = false)
+        {
+            return service.SaveTodoItemAsync(todoItem, isNewItem);
+        }*/
     }
 }

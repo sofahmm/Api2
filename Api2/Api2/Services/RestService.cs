@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Api2.Services
 {
-    public class RestService
+    public class RestService : IrestService
     {
         HttpClient client;
         JsonSerializerOptions serializerOptions;
@@ -44,25 +44,6 @@ namespace Api2.Services
                 Debug.WriteLine($"@@@@@@@@@@////{ex.Message}");
             }
         }
-        public async Task<List<CatItemModel>> GetCatItemAsync()
-        {
-            CatItems = new List<CatItemModel>();
-            Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
-            try
-            {
-                HttpResponseMessage response = await client.GetAsync(uri);
-                if (response.IsSuccessStatusCode)
-                {
-                    string content = await response.Content.ReadAsStringAsync();
-                    CatItems = JsonSerializer.Deserialize<List<CatItemModel>>(content, serializerOptions);
-                }
-            }
-            catch(Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-            }
-            return CatItems;
-        }
         public async Task SaveCatItemAsync(CatItemModel item, bool isNewItem)
         {
             Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
@@ -88,6 +69,26 @@ namespace Api2.Services
             {
                 Debug.WriteLine(ex.Message);
             }
+        }
+
+        public async Task<List<CatItemModel>> GetCatitemAsync()
+        {
+            CatItems = new List<CatItemModel>();
+            Uri uri = new Uri(string.Format(Constants.RestUrl, string.Empty));
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    string content = await response.Content.ReadAsStringAsync();
+                    CatItems = JsonSerializer.Deserialize<List<CatItemModel>>(content, serializerOptions);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+            return CatItems;
         }
     }
 }
